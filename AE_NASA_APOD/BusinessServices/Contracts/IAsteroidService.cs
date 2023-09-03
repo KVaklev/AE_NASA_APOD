@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccessModels.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,17 @@ namespace BusinessServices.Contracts
 {
     public interface IAsteroidService
     {
+        List<Asteroid> GetAll();
+
+        List<Asteroid> FilterBy(AsteroidQueryParameters asteroidQueryParameters);
+
+        Asteroid GetById(int id);
+
+        //Asteroid Create(Asteroid asteroid);
+
+        //Asteroid Update(Asteroid asteroid);
+
+        //Asteroid Delete(int id);
 
     }
 }
