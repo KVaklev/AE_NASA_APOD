@@ -1,4 +1,5 @@
-﻿using DataAccessModels.Models;
+﻿using BusinessQueryParameters;
+using DataAccessModels.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

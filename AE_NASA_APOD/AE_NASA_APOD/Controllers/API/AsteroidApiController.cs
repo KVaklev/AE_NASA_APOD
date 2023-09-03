@@ -1,4 +1,5 @@
-﻿using BusinessServices.Contracts;
+﻿using BusinessQueryParameters;
+using BusinessServices.Contracts;
 using DataAccessModels.Models;
 using Microsoft.AspNetCore.Mvc;
 

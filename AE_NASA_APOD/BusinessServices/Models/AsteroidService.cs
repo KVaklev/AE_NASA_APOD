@@ -1,4 +1,5 @@
-﻿using BusinessServices.Contracts;
+﻿using BusinessQueryParameters;
+using BusinessServices.Contracts;
 using DataAccessModels.Models;
 using DataAccessRepositories.Contracts;
 using System;
@@ -13,7 +14,7 @@ namespace BusinessServices.Models
     {
         private readonly IAsteroidRepository asteroidRepository;
 
-        public AsteroidService (IAsteroidRepository asteroidRepository)
+        public AsteroidService(IAsteroidRepository asteroidRepository)
         {
             this.asteroidRepository = asteroidRepository;
         }
@@ -23,14 +24,13 @@ namespace BusinessServices.Models
         }
         public List<Asteroid> FilterBy(AsteroidQueryParameters queryParameters)
         {
-            throw new NotImplementedException();
-            //return this.asteroidRepository.FilterBy(queryParameters);
+            return this.asteroidRepository.FilterBy(queryParameters);
         }
         public Asteroid GetById(int id)
         {
             return this.asteroidRepository.GetById(id);
         }
 
-        
+
     }
 }
