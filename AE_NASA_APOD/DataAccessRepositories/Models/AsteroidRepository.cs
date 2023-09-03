@@ -1,4 +1,5 @@
 ﻿using BusinessExceptions;
+using BusinessQueryParameters;
 using DataAccessModels.Models;
 using DataAccessRepositories.Contracts;
 
@@ -54,9 +55,44 @@ namespace DataAccessRepositories.Models
                 }
             };
         }
+
         public List<Asteroid> GetAll()
         {
             return this.asteroids;
+        }
+        public List<Asteroid> FilterBy(AsteroidQueryParameters queryParameters)
+        {
+            List<Asteroid> result = this.asteroids;
+
+            if(!string.IsNullOrEmpty(queryParameters.Title))
+            {
+                result = result.FindAll(asteroid => asteroid.Title == queryParameters.Title);
+            }
+
+            if(!string.IsNullOrEmpty(queryParameters.Copyright))
+            {
+                result = result.FindAll(asteroid => asteroid.Copyright == queryParameters.Copyright);   
+            }
+
+            if (!string.IsNullOrEmpty(queryParameters.SortBy))
+            {
+                if(queryParameters.SortBy.Equals("title", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    result = result.OrderBy(asteroid => asteroid.Title).ToList();
+                }
+
+                if (queryParameters.SortBy.Equals("copyright", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    result = result.OrderBy(asteroid => asteroid.Copyright).ToList();
+                }
+
+                if(!string.IsNullOrEmpty(queryParameters.SortOrder) && queryParameters.SortOrder.Equals("desc", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    result.Reverse();
+                }
+            }
+
+            return result;
         }
 
         public Asteroid GetById(int id)

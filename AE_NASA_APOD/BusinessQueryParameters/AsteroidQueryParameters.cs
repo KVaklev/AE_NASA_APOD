@@ -4,8 +4,6 @@
     {
         public string? Copyright { get; set; }
 
-        public string? Explanation { get; set; }
-
         public string? Title { get; set; }
 
         public DateTime? FromDateTime { get; set; }
@@ -16,7 +14,7 @@
 
         public string? SortOrder { get; set; }
 
-        public int PageSize { get; set; } = 5;
-        public int PageNumber { get; set; } = 1;
+        //public int PageSize { get; set; } = 5;
+        //public int PageNumber { get; set; } = 1;
     }
 }

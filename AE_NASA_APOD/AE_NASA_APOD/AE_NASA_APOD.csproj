@@ -15,4 +15,8 @@
     <ProjectReference Include="..\DataAccessRepositories\DataAccessRepositories.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\MVC\" />
+  </ItemGroup>
+
 </Project>

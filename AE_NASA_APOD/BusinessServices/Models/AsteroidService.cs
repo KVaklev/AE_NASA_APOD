@@ -21,15 +21,16 @@ namespace BusinessServices.Models
         {
             return this.asteroidRepository.GetAll();
         }
+        public List<Asteroid> FilterBy(AsteroidQueryParameters queryParameters)
+        {
+            throw new NotImplementedException();
+            //return this.asteroidRepository.FilterBy(queryParameters);
+        }
         public Asteroid GetById(int id)
         {
             return this.asteroidRepository.GetById(id);
         }
-        public List<Asteroid> FilterBy(AsteroidQueryParameters asteroidQueryParameters)
-        {
-            throw new NotImplementedException();
-        }
 
-
+        
     }
 }

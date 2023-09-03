@@ -1,4 +1,5 @@
-﻿using DataAccessModels.Models;
+﻿using BusinessQueryParameters;
+using DataAccessModels.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,8 @@ namespace DataAccessRepositories.Contracts
     public interface IAsteroidRepository
     {
         List<Asteroid> GetAll();
+
+        List<Asteroid> FilterBy(AsteroidQueryParameters queryParameters);
 
         Asteroid GetById(int id);
 

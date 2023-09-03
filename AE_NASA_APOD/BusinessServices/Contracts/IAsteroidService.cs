@@ -11,7 +11,7 @@ namespace BusinessServices.Contracts
     {
         List<Asteroid> GetAll();
 
-        List<Asteroid> FilterBy(AsteroidQueryParameters asteroidQueryParameters);
+        List<Asteroid> FilterBy(AsteroidQueryParameters queryParameters);
 
         Asteroid GetById(int id);
 
