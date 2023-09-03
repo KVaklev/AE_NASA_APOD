@@ -3,23 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AE_NASA_APOD", "AE_NASA_APOD\AE_NASA_APOD.csproj", "{C017722D-7AB7-4969-90AF-82DAC3B1AF91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AE_NASA_APOD", "AE_NASA_APOD\AE_NASA_APOD.csproj", "{C017722D-7AB7-4969-90AF-82DAC3B1AF91}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BusinessLayer", "BusinessLayer", "{1CADB239-8925-4130-8D79-FB8D161C3224}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessDTOs", "BusinessDTOs\BusinessDTOs.csproj", "{DAD5A68A-C1AC-4E52-B537-9E2EE44B78B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessDTOs", "BusinessDTOs\BusinessDTOs.csproj", "{DAD5A68A-C1AC-4E52-B537-9E2EE44B78B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessExceptions", "BusinessExceptions\BusinessExceptions.csproj", "{3A7847F3-2357-4530-A6EB-4C6A21511A0A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessExceptions", "BusinessExceptions\BusinessExceptions.csproj", "{3A7847F3-2357-4530-A6EB-4C6A21511A0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessServices", "BusinessServices\BusinessServices.csproj", "{B21B2ACE-3295-4CEA-8B86-837BEB40352C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessServices", "BusinessServices\BusinessServices.csproj", "{B21B2ACE-3295-4CEA-8B86-837BEB40352C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccessLayer", "DataAccessLayer", "{52692288-FD82-4423-9A2D-1A2D3C4B6B2F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessModels", "DataAccessModels\DataAccessModels.csproj", "{AB7C8545-A6BE-4EE8-93E2-9F071E4D7719}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessModels", "DataAccessModels\DataAccessModels.csproj", "{AB7C8545-A6BE-4EE8-93E2-9F071E4D7719}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessRepositories", "DataAccessRepositories\DataAccessRepositories.csproj", "{9D85CAD0-A6AD-4580-A8C9-D58C27ADF804}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessRepositories", "DataAccessRepositories\DataAccessRepositories.csproj", "{9D85CAD0-A6AD-4580-A8C9-D58C27ADF804}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PresentationLayer", "PresentationLayer", "{4BD3975A-A27D-4130-B13F-EEA2FCE34CEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessQueryParameters", "BusinessQueryParameters\BusinessQueryParameters.csproj", "{6689AEB5-5D8A-4CF4-85DC-A5B46776B6CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{9D85CAD0-A6AD-4580-A8C9-D58C27ADF804}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D85CAD0-A6AD-4580-A8C9-D58C27ADF804}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D85CAD0-A6AD-4580-A8C9-D58C27ADF804}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6689AEB5-5D8A-4CF4-85DC-A5B46776B6CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6689AEB5-5D8A-4CF4-85DC-A5B46776B6CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6689AEB5-5D8A-4CF4-85DC-A5B46776B6CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6689AEB5-5D8A-4CF4-85DC-A5B46776B6CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +68,7 @@ Global
 		{B21B2ACE-3295-4CEA-8B86-837BEB40352C} = {1CADB239-8925-4130-8D79-FB8D161C3224}
 		{AB7C8545-A6BE-4EE8-93E2-9F071E4D7719} = {52692288-FD82-4423-9A2D-1A2D3C4B6B2F}
 		{9D85CAD0-A6AD-4580-A8C9-D58C27ADF804} = {52692288-FD82-4423-9A2D-1A2D3C4B6B2F}
+		{6689AEB5-5D8A-4CF4-85DC-A5B46776B6CA} = {1CADB239-8925-4130-8D79-FB8D161C3224}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6BE4CC81-7FF2-4F61-A0E3-1C46B294822B}
