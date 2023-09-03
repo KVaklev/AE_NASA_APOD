@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccessRepositories.Contracts
+namespace DataAccessRepositories.Models
 {
-    internal interface IAsteroidRepositories
+    public class AsteroidRepository
     {
     }
 }
