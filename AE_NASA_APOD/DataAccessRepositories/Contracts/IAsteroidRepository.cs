@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccessModels.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,17 @@ namespace DataAccessRepositories.Contracts
 {
     public interface IAsteroidRepository
     {
+        List<Asteroid> GetAll();
+
+        Asteroid GetById(int id);
+
+        Asteroid GetByTitle(string title);
+
+        //Asteroid Create(Asteroid asteroid);
+
+        //Asteroid Update(Asteroid asteroid);
+
+        //Asteroid Delete(int id);    
+
     }
 }
