@@ -1,3 +1,8 @@
+using BusinessServices.Contracts;
+using BusinessServices.Models;
+using DataAccessRepositories.Contracts;
+using DataAccessRepositories.Models;
+
 namespace AE_NASA_APOD
 {
     public class Program
@@ -6,8 +11,21 @@ namespace AE_NASA_APOD
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            //builder.Services.AddDbContext<ApplicationContext>(options =>
+            //{
+            //    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+            //    options.EnableSensitiveDataLogging();
+            //});
+
             // Add services to the container.
+            builder.Services.AddControllers();
             builder.Services.AddControllersWithViews();
+
+            //Repositories
+            builder.Services.AddSingleton<IAsteroidRepository, AsteroidRepository>();
+
+            //Services
+            builder.Services.AddScoped<IAsteroidService, AsteroidService>();
 
             var app = builder.Build();
 
