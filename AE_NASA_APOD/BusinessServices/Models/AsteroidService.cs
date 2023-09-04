@@ -30,7 +30,5 @@ namespace BusinessServices.Models
         {
             return this.asteroidRepository.GetById(id);
         }
-
-
     }
 }

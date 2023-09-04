@@ -1,4 +1,5 @@
-﻿using BusinessQueryParameters;
+﻿using BusinessExceptions;
+using BusinessQueryParameters;
 using BusinessServices.Contracts;
 using DataAccessModels.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -19,18 +20,26 @@ namespace AE_NASA_APOD.Controllers.API
         [HttpGet("")]
         public IActionResult GetAsteroids([FromQuery] AsteroidQueryParameters queryParameters)
         {
-            List<Asteroid> result = this.asteroidService.GetAll();
+            List<Asteroid> result = this.asteroidService.FilterBy(queryParameters);
 
             return this.StatusCode(StatusCodes.Status200OK, result);
         }
 
-        //[HttpGet("{id}")]
+        [HttpGet("{id}")]
 
-        //public IActionResult GetAsteroidById(int id)
-        //{
+        public IActionResult GetAsteroidById(int id)
+        {
+            try
+            {
+                Asteroid asteroid = this.asteroidService.GetById(id);
 
-        //}
+                return this.StatusCode(StatusCodes.Status200OK, asteroid);
 
-
+            }
+            catch (EntityNotFoundException e)
+            {
+                return this.StatusCode(StatusCodes.Status404NotFound, e.Message);
+            }
+        }
     }
 }

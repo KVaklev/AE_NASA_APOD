@@ -16,40 +16,45 @@ namespace DataAccessRepositories.Models
                 new Asteroid
                 {
                     Id = 1,
+                    Copyright = "Lorand Fenyes",
                     MediaType = "image",
-                    Date = "2023-09-02",
+                    DateTime = DateTime.Now,
                     Explanation = "These cosmic clouds have blossomed 1,300 light-years away in the fertile starfields of the constellation Cepheus.",
                     Title = "The Iris Nebula"
                 },
                 new Asteroid
                 {
                     Id = 2,
+                    Copyright = "James Hichcock",
                     MediaType = "image",
-                    Date = "2023-08-02",
+                    DateTime = DateTime.Now,
                     Explanation = "Ceres is the largest asteroid in the asteroid belt between Mars and Jupiter. It's also classified as a dwarf planet and was the first object to be discovered in the asteroid belt. It was discovered in 1801 by Italian astronomer Giuseppe Piazzi.",
                     Title = "Ceres"
                 },
                 new Asteroid
                 {
                     Id = 3,
+                    Copyright = "David Johnson",
                     MediaType = "image",
-                    Date = "2023-07-02",
+                    DateTime = DateTime.Now,
                     Explanation = "Vesta is the second-largest asteroid in the asteroid belt. It was discovered in 1807 by German astronomer Heinrich Wilhelm Olbers. NASA's Dawn spacecraft orbited and studied Vesta from 2011 to 2012, providing valuable insights into its composition and history.",
                     Title = "Vesta"
                 },
                 new Asteroid
                 {
                     Id = 4,
+                    Copyright = "Michael Brook",
                     MediaType = "image",
-                    Date = "2023-06-02",
+                    DateTime = DateTime.Now,
                     Explanation = "Pallas is the third-largest asteroid and was discovered in 1802 by German astronomer Heinrich Wilhelm Olbers. It's named after Pallas Athena, the Greek goddess of wisdom.",
                     Title = "Pallas"
                 },
                 new Asteroid
                 {
                     Id = 5,
+                    Copyright = "Damien Jones",
                     MediaType = "image",
-                    Date = "2023-05-02",
+                    DateTime = DateTime.Now,
                     Explanation = "Juno is one of the larger asteroids and was discovered in 1804 by German astronomer Karl Harding. It is named after the Roman goddess Juno, who was the queen of the gods.",
                     Title = "Juno"
                 }
@@ -86,7 +91,17 @@ namespace DataAccessRepositories.Models
                     result = result.OrderBy(asteroid => asteroid.Copyright).ToList();
                 }
 
-                if(!string.IsNullOrEmpty(queryParameters.SortOrder) && queryParameters.SortOrder.Equals("desc", StringComparison.InvariantCultureIgnoreCase))
+                if (queryParameters.FromDateTime.HasValue)
+                {
+                    result = result.FindAll(asteroid => asteroid.DateTime >= queryParameters.FromDateTime);
+                }
+
+                if (queryParameters.ToDateTime.HasValue)
+                {
+                    result = result.FindAll(asteroid => asteroid.DateTime <= queryParameters.ToDateTime);
+                }
+
+                if (!string.IsNullOrEmpty(queryParameters.SortOrder) && queryParameters.SortOrder.Equals("desc", StringComparison.InvariantCultureIgnoreCase))
                 {
                     result.Reverse();
                 }
