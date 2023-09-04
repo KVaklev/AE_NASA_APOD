@@ -36,7 +36,7 @@ namespace AE_NASA_APOD.Controllers.API
         public IActionResult GetAsteroidById(int id)
         {
             try
-            {
+            { 
                 Asteroid asteroid = this.asteroidService.GetById(id);
 
                 GetAsteroidDTO getAsteroidDTO = mapper.Map(asteroid);
