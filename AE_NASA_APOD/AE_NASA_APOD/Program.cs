@@ -28,12 +28,18 @@ namespace AE_NASA_APOD
             //Services
             builder.Services.AddScoped<IAsteroidService, AsteroidService>();
             builder.Services.AddScoped<ModelMapper>();
+            builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             app.UseDeveloperExceptionPage();
-            app.UseRouting();           
+            app.UseRouting();
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseSwagger();
+                app.UseSwaggerUI();
+            }
             app.UseStaticFiles();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
