@@ -1,4 +1,5 @@
-﻿using BusinessServices.Contracts;
+﻿using BusinessQueryParameters;
+using BusinessServices.Contracts;
 using DataAccessModels.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,9 +16,9 @@ namespace AE_NASA_APOD.Controllers.MVC
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index(AsteroidQueryParameters asteroidQueryParameters)
         {
-            List<Asteroid> asteroids = this.asteroidService.GetAll();
+            List<Asteroid> asteroids = this.asteroidService.FilterBy(asteroidQueryParameters);
 
             return View(asteroids);
         }

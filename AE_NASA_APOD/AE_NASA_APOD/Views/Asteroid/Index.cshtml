@@ -5,27 +5,41 @@
 
 <style>
     .custom-text-color {
-        color: greenyellow; 
+        color: greenyellow;
     }
 </style>
 
 <style>
-    
+
     .table-header {
-        background-color: #FFFFE0; 
+        background-color: #FFFFE0;
         color: black;
     }
 
     .cell {
         color: greenyellow;
     }
+
+    .filter-section {
+        color: white;
+        margin-bottom: 20px;
 </style>
 
 <h2 style="color: white;">ASTEROIDS</h2>
 
+<div class="filter-section">
+    <p>Asteroid Filter By</p>
+
+    <form asp-controller="Asteroid" asp-action="Index" method="get">
+        <input type="text" copyright ="Copyright" />
+        <input type="submit" value="Search" class="btn btn-primary" />
+    </form>
+</div>
+
+
 <div class="table">
     <div class="header">
-         <div class="header-cell table-header">Copyright</div>
+        <div class="header-cell table-header">Copyright</div>
         <div class="header-cell table-header">Title</div>
         <div class="header-cell table-header">Date</div>
         <div class="header-cell table-header">Details</div>

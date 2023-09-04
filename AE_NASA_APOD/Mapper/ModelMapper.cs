@@ -12,6 +12,8 @@ namespace Mapper
                 Copyright = asteroid.Copyright,
                 Title = asteroid.Title,
                 DateTime = asteroid.DateTime,
+                Explanation = asteroid.Explanation,
+
             };
         }
     }
