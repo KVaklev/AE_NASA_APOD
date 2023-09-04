@@ -31,7 +31,7 @@
     <p>Asteroid Filter By</p>
 
     <form asp-controller="Asteroid" asp-action="Index" method="get">
-        <input type="text" copyright ="Copyright" />
+        <input type="text" copyright="Copyright" />
         <input type="submit" value="Search" class="btn btn-primary" />
     </form>
 </div>
@@ -64,12 +64,23 @@
 
 }
 
-<a asp-controller="Asteroid" asp-action="Index" asp-route-PageNumber="@this.Model.PageNumber-1" class="btn btn-link @prevButtonState">Prev</a>
+<a asp-controller="Asteroid" asp-action="Index" asp-route-PageNumber="@(this.Model.PageNumber-1)" class="btn btn-link @prevButtonState">Prev</a>
+
 @{
+    int currentPageNumber = this.Model.PageNumber;
+
     for (int i = 1; i <= this.Model.TotalPages; i++)
     {
-        <span><a asp-controller="Asteroid" asp-action="Index" asp-route-PageNumber="@i">@i</a></span>
+        if (i == currentPageNumber)
+        {
+            <span>@i</span>
+        }
+        else
+        {
+            <span><a asp-controller="Asteroid" asp-action="Index" asp-route-PageNumber="@i">@i</a></span>
+
+        }
     }
 }
-<a asp-controller="Asteroid" asp-action="Index" asp-route-PageNumber="@this.Model.PageNumber+1" class="btn btn-link @nextButtonState">Next</a>
+<a asp-controller="Asteroid" asp-action="Index" asp-route-PageNumber="@(this.Model.PageNumber+1)" class="btn btn-link @nextButtonState">Next</a>
 

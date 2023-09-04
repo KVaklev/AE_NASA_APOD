@@ -107,7 +107,8 @@ namespace DataAccessRepositories.Models
                 }
             }
 
-            int totalPages = (result.Count() + queryParameters.PageSize - 1) / queryParameters.PageSize;
+            
+            int totalPages = (result.Count()+1) / queryParameters.PageSize;
 
             result = Paginate(result, queryParameters.PageNumber, queryParameters.PageSize);
 
