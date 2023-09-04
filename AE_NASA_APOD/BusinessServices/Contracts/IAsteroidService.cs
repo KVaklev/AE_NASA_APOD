@@ -12,7 +12,7 @@ namespace BusinessServices.Contracts
     {
         List<Asteroid> GetAll();
 
-        List<Asteroid> FilterBy(AsteroidQueryParameters queryParameters);
+        PaginatedList<Asteroid> FilterBy(AsteroidQueryParameters queryParameters);
 
         Asteroid GetById(int id);
 

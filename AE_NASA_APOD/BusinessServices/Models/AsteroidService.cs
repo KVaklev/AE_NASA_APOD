@@ -22,7 +22,7 @@ namespace BusinessServices.Models
         {
             return this.asteroidRepository.GetAll();
         }
-        public List<Asteroid> FilterBy(AsteroidQueryParameters queryParameters)
+        public PaginatedList<Asteroid> FilterBy(AsteroidQueryParameters queryParameters)
         {
             return this.asteroidRepository.FilterBy(queryParameters);
         }

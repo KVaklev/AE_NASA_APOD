@@ -14,7 +14,7 @@
 
         public string? SortOrder { get; set; }
 
-        //public int PageSize { get; set; } = 5;
-        //public int PageNumber { get; set; } = 1;
+        public int PageSize { get; set; } = 3;
+        public int PageNumber { get; set; } = 1;
     }
 }

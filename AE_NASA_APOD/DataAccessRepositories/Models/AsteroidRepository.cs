@@ -65,7 +65,7 @@ namespace DataAccessRepositories.Models
         {
             return this.asteroids;
         }
-        public List<Asteroid> FilterBy(AsteroidQueryParameters queryParameters)
+        public PaginatedList<Asteroid> FilterBy(AsteroidQueryParameters queryParameters)
         {
             List<Asteroid> result = this.asteroids;
 
@@ -107,7 +107,18 @@ namespace DataAccessRepositories.Models
                 }
             }
 
-            return result;
+            int totalPages = (result.Count() + queryParameters.PageSize - 1) / queryParameters.PageSize;
+
+            result = Paginate(result, queryParameters.PageNumber, queryParameters.PageSize);
+
+            return new PaginatedList<Asteroid>(result, totalPages, queryParameters.PageNumber);
+        }
+
+        public static List<Asteroid> Paginate(List<Asteroid> result, int pageNumber, int pageSize)
+        {
+            return result
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize).ToList();
         }
 
         public Asteroid GetById(int id)
