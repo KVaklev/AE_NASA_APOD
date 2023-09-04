@@ -1,9 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,14 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BusinessDTOs\BusinessDTOs.csproj" />
-    <ProjectReference Include="..\BusinessServices\BusinessServices.csproj" />
+    <ProjectReference Include="..\DataAccessModels\DataAccessModels.csproj" />
     <ProjectReference Include="..\DataAccessRepositories\DataAccessRepositories.csproj" />
-    <ProjectReference Include="..\Mapper\Mapper.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\MVC\" />
   </ItemGroup>
 
 </Project>

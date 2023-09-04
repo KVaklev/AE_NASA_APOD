@@ -2,6 +2,7 @@
 using BusinessQueryParameters;
 using BusinessServices.Contracts;
 using DataAccessModels.Models;
+using Mapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AE_NASA_APOD.Controllers.API
@@ -11,8 +12,9 @@ namespace AE_NASA_APOD.Controllers.API
     public class AsteroidApiController : ControllerBase
     {
         private readonly IAsteroidService asteroidService;
+        private readonly ModelMapper modelMapper;
 
-        public AsteroidApiController(IAsteroidService asteroidService)
+        public AsteroidApiController(IAsteroidService asteroidService, ModelMapper modelMapper)
         {
             this.asteroidService = asteroidService;
         }
