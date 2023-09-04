@@ -9,5 +9,12 @@ namespace AE_NASA_APOD.Controllers.MVC
         {
             return View();
         }
+
+        [HttpGet]
+        public IActionResult About()
+        {
+            return View();
+        }
     }
 }
+ 

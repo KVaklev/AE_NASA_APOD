@@ -1,0 +1,45 @@
+﻿@using AE_NASA_APOD.Models
+@using DataAccessModels.Models
+@using BusinessQueryParameters;
+@model List<Asteroid>
+
+<style>
+    .custom-text-color {
+        color: greenyellow; 
+    }
+</style>
+
+<style>
+    
+    .table-header {
+        background-color: #FFFFE0; 
+        color: black;
+    }
+
+    .cell {
+        color: greenyellow;
+    }
+</style>
+
+<h2 style="color: white;">ASTEROIDS</h2>
+
+<div class="table">
+    <div class="header">
+         <div class="header-cell table-header">Copyright</div>
+        <div class="header-cell table-header">Title</div>
+        <div class="header-cell table-header">Date</div>
+        <div class="header-cell table-header">Details</div>
+    </div>
+
+    @{
+        foreach (var asteroid in this.Model)
+        {
+            <div class="row">
+                <div class="cell custom-text-color">@asteroid.Copyright</div>
+                <div class="cell custom-text-color">@asteroid.Title</div>
+                <div class="cell custom-text-color">@asteroid.DateTime</div>
+                <div class="cell custom-text-color">@asteroid.Explanation</div>
+            </div>
+        }
+    }
+</div>
