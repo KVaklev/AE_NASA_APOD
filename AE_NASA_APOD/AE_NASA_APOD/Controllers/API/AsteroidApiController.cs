@@ -39,7 +39,9 @@ namespace AE_NASA_APOD.Controllers.API
             {
                 Asteroid asteroid = this.asteroidService.GetById(id);
 
-                return this.StatusCode(StatusCodes.Status200OK, asteroid);
+                GetAsteroidDTO getAsteroidDTO = mapper.Map(asteroid);
+
+                return this.StatusCode(StatusCodes.Status200OK, getAsteroidDTO);
 
             }
             catch (EntityNotFoundException e)
