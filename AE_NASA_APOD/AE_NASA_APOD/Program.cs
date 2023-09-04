@@ -2,6 +2,7 @@ using BusinessServices.Contracts;
 using BusinessServices.Models;
 using DataAccessRepositories.Contracts;
 using DataAccessRepositories.Models;
+using Mapper;
 
 namespace AE_NASA_APOD
 {
@@ -26,6 +27,7 @@ namespace AE_NASA_APOD
 
             //Services
             builder.Services.AddScoped<IAsteroidService, AsteroidService>();
+            builder.Services.AddScoped<ModelMapper>();
 
             var app = builder.Build();
 

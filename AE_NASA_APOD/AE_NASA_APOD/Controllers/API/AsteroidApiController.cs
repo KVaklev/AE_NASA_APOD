@@ -1,4 +1,5 @@
-﻿using BusinessExceptions;
+﻿using BusinessDTOs;
+using BusinessExceptions;
 using BusinessQueryParameters;
 using BusinessServices.Contracts;
 using DataAccessModels.Models;
@@ -12,11 +13,12 @@ namespace AE_NASA_APOD.Controllers.API
     public class AsteroidApiController : ControllerBase
     {
         private readonly IAsteroidService asteroidService;
-        private readonly ModelMapper modelMapper;
+        private readonly ModelMapper mapper;
 
-        public AsteroidApiController(IAsteroidService asteroidService, ModelMapper modelMapper)
+        public AsteroidApiController(IAsteroidService asteroidService, ModelMapper mapper)
         {
             this.asteroidService = asteroidService;
+            this.mapper = mapper;
         }
 
         [HttpGet("")]
@@ -24,7 +26,9 @@ namespace AE_NASA_APOD.Controllers.API
         {
             List<Asteroid> result = this.asteroidService.FilterBy(queryParameters);
 
-            return this.StatusCode(StatusCodes.Status200OK, result);
+            List<GetAsteroidDTO> getAsteroidDTOs = result.Select(asteroid => mapper.Map(asteroid)).ToList();
+
+            return this.StatusCode(StatusCodes.Status200OK, getAsteroidDTOs);
         }
 
         [HttpGet("{id}")]

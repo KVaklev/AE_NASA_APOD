@@ -5,13 +5,13 @@ namespace Mapper
 {
     public class ModelMapper
     {
-        public Asteroid Map(GetAsteroidDTO getAsteroidDTO)
+        public GetAsteroidDTO Map(Asteroid asteroid)
         {
-            return new Asteroid
+            return new GetAsteroidDTO
             {
-                Copyright = getAsteroidDTO.Copyright,
-                Title = getAsteroidDTO.Title,
-                DateTime = getAsteroidDTO.DateTime,
+                Copyright = asteroid.Copyright,
+                Title = asteroid.Title,
+                DateTime = asteroid.DateTime,
             };
         }
     }
