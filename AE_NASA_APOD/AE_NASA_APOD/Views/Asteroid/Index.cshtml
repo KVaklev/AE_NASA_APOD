@@ -25,6 +25,12 @@
         margin-bottom: 20px;
 </style>
 
+<style>
+    .details-button {
+        color: yellowgreen; 
+    }
+</style>
+
 <h2 style="color: white;">ASTEROIDS</h2>
 
 <div class="filter-section">
@@ -42,6 +48,7 @@
         <div class="header-cell table-header">Copyright</div>
         <div class="header-cell table-header">Title</div>
         <div class="header-cell table-header">Date</div>
+        <div class="header-cell table-header">Summary</div>
         <div class="header-cell table-header">Details</div>
     </div>
 
@@ -53,6 +60,9 @@
                 <div class="cell custom-text-color">@asteroid.Title</div>
                 <div class="cell custom-text-color">@asteroid.DateTime</div>
                 <div class="cell custom-text-color">@asteroid.Explanation</div>
+                <div class="cell">
+                    <a href="@($"/Asteroid/Details/{asteroid.Id}")" class="nav details-button">Details</a>
+                </div>
             </div>
         }
     }

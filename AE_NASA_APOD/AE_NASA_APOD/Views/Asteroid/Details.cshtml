@@ -1,0 +1,29 @@
+﻿@using AE_NASA_APOD.Models
+@using DataAccessModels.Models
+@using BusinessQueryParameters;
+@model Asteroid
+
+<style>
+    .custom-text-color {
+        color: greenyellow;
+    }
+</style>
+
+<style>
+    .custom-text-color-title {
+        color: white;
+    }
+</style>
+
+<h2 class="yellow-green"><span class="custom-text-color-title">@this.Model.Title</h2>
+
+<p class="margin12"><span class="custom-text-color-title"> Copyright: <span class="custom-text-color"> @this.Model.Copyright</span></p>
+<p class="margin12"><span class="custom-text-color-title"> Date: <span class="custom-text-color">@this.Model.DateTime</span></p>
+<p class="margin12"><span class="custom-text-color-title"> Explanation: <span class="custom-text-color">@this.Model.Explanation</span></p>
+<p class="margin12"><span class="custom-text-color-title"> HDURL: <span class="custom-text-color">@this.Model.HdUrl</span></p>
+<p class="margin12"><span class="custom-text-color-title"> MediaType: <span class="custom-text-color">@this.Model.MediaType</span></p>
+<p class="margin12"><span class="custom-text-color-title"> ServiceVersion: <span class="custom-text-color">@this.Model.ServiceVersion</span></p>
+<p class="margin12"><span class="custom-text-color-title"> Title: <span class="custom-text-color">@this.Model.Title</span></p>
+<p class="margin12"><span class="custom-text-color-title"> URL: <span class="custom-text-color">@this.Model.Url</span></p>
+
+<a asp-controller="Asteroid" asp-action="Index" class="btn btn-primary ">Back</a>
