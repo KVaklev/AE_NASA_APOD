@@ -16,47 +16,56 @@ namespace DataAccessRepositories.Models
                 new Asteroid
                 {
                     Id = 1,
-                    Copyright = "Lorand Fenyes",
-                    MediaType = "image",
-                    DateTime = DateTime.Now,
-                    Explanation = "These cosmic clouds have blossomed 1,300 light-years away in the fertile starfields of the constellation Cepheus.",
-                    Title = "The Iris Nebula"
+                    Name = "465633 (2009 JR5)",
+                    NasaJplUrl="http://ssd.jpl.nasa.gov/sbdb.cgi?sstr=2465633",
+                    AbsoluteMagnitude = 20.44,
+                    EstimatedMaxDiameter = 0.4853331752,
+                    CloseApproachDate = "2015-09-08",
+                    VelocityKmH = "65260.5699103704",
+                    DistanceKm = "45290298.225725659"
                 },
                 new Asteroid
                 {
                     Id = 2,
-                    Copyright = "James Hichcock",
-                    MediaType = "image",
-                    DateTime = DateTime.Now,
-                    Explanation = "Ceres is the largest asteroid in the asteroid belt between Mars and Jupiter. It's also classified as a dwarf planet and was the first object to be discovered in the asteroid belt. It was discovered in 1801 by Italian astronomer Giuseppe Piazzi.",
-                    Title = "Ceres"
+                    Name = "(2008 QV11)",
+                    NasaJplUrl="http://ssd.jpl.nasa.gov/sbdb.cgi?sstr=3426410",
+                    AbsoluteMagnitude = 21.34,
+                    EstimatedMaxDiameter = 0.320656449,
+                    CloseApproachDate = "2015-09-08",
+                    VelocityKmH = "71099.3261312856",
+                    DistanceKm = "38764558.550560687"
                 },
                 new Asteroid
                 {
                     Id = 3,
-                    Copyright = "David Johnson",
-                    MediaType = "image",
-                    DateTime = DateTime.Now,
-                    Explanation = "Vesta is the second-largest asteroid in the asteroid belt. It was discovered in 1807 by German astronomer Heinrich Wilhelm Olbers. NASA's Dawn spacecraft orbited and studied Vesta from 2011 to 2012, providing valuable insights into its composition and history.",
-                    Title = "Vesta"
+                    Name = "(2010 XT10)",
+                    NasaJplUrl="http://ssd.jpl.nasa.gov/sbdb.cgi?sstr=3553060",
+                                        AbsoluteMagnitude = 26.5,
+                    EstimatedMaxDiameter = 0.0297879063,
+                    CloseApproachDate = "2015-09-08",
+                    VelocityKmH = "68950.9255988812",
+                    DistanceKm = "73563782.385433689"
                 },
                 new Asteroid
                 {
                     Id = 4,
-                    Copyright = "Michael Brook",
-                    MediaType = "image",
-                    DateTime = DateTime.Now,
-                    Explanation = "Pallas is the third-largest asteroid and was discovered in 1802 by German astronomer Heinrich Wilhelm Olbers. It's named after Pallas Athena, the Greek goddess of wisdom.",
-                    Title = "Pallas"
+                    Name = "(2015 RC)",
+                    NasaJplUrl="http://ssd.jpl.nasa.gov/sbdb.cgi?sstr=3726710",
+                    AbsoluteMagnitude = 24.3,
+                    EstimatedMaxDiameter = 0.0820427065,
+                    CloseApproachDate = "2015-09-08",
+                    VelocityKmH = "70151.9167909206",
+                    DistanceKm = "4027962.697099799"
                 },
                 new Asteroid
                 {
                     Id = 5,
-                    Copyright = "Damien Jones",
-                    MediaType = "image",
-                    DateTime = DateTime.Now,
-                    Explanation = "Juno is one of the larger asteroids and was discovered in 1804 by German astronomer Karl Harding. It is named after the Roman goddess Juno, who was the queen of the gods.",
-                    Title = "Juno"
+                    Name = "(2015 RO36)",
+                    NasaJplUrl="http://ssd.jpl.nasa.gov/sbdb.cgi?sstr=3727181",
+                    AbsoluteMagnitude = 22.9,
+                    EstimatedMaxDiameter = 0.1563291544,
+                    VelocityKmH = "56899.294813224",
+                    DistanceKm = "8084157.219990045"
                 }
             };
         }
@@ -69,46 +78,25 @@ namespace DataAccessRepositories.Models
         {
             List<Asteroid> result = this.asteroids;
 
-            if(!string.IsNullOrEmpty(queryParameters.Title))
+            if (!string.IsNullOrEmpty(queryParameters.Name))
             {
-                result = result.FindAll(asteroid => asteroid.Title == queryParameters.Title);
-            }
-
-            if(!string.IsNullOrEmpty(queryParameters.Copyright))
-            {
-                result = result.FindAll(asteroid => asteroid.Copyright == queryParameters.Copyright);   
+                result = result.FindAll(asteroid => asteroid.Name == queryParameters.Name);
             }
 
             if (!string.IsNullOrEmpty(queryParameters.SortBy))
             {
-                if(queryParameters.SortBy.Equals("title", StringComparison.InvariantCultureIgnoreCase))
+                if (queryParameters.SortBy.Equals("name", StringComparison.InvariantCultureIgnoreCase))
                 {
-                    result = result.OrderBy(asteroid => asteroid.Title).ToList();
-                }
-
-                if (queryParameters.SortBy.Equals("copyright", StringComparison.InvariantCultureIgnoreCase))
-                {
-                    result = result.OrderBy(asteroid => asteroid.Copyright).ToList();
-                }
-
-                if (queryParameters.FromDateTime.HasValue)
-                {
-                    result = result.FindAll(asteroid => asteroid.DateTime >= queryParameters.FromDateTime);
-                }
-
-                if (queryParameters.ToDateTime.HasValue)
-                {
-                    result = result.FindAll(asteroid => asteroid.DateTime <= queryParameters.ToDateTime);
-                }
-
+                    result = result.OrderBy(asteroid => asteroid.Name).ToList();
+                }               
+                
                 if (!string.IsNullOrEmpty(queryParameters.SortOrder) && queryParameters.SortOrder.Equals("desc", StringComparison.InvariantCultureIgnoreCase))
                 {
                     result.Reverse();
                 }
             }
 
-            
-            int totalPages = (result.Count()+1) / queryParameters.PageSize;
+            int totalPages = (result.Count() + 1) / queryParameters.PageSize;
 
             result = Paginate(result, queryParameters.PageNumber, queryParameters.PageSize);
 
@@ -124,16 +112,16 @@ namespace DataAccessRepositories.Models
 
         public Asteroid GetById(int id)
         {
-            Asteroid asteroid = this.asteroids.Where(a=>a.Id == id).FirstOrDefault();
+            Asteroid asteroid = this.asteroids.Where(a => a.Id == id).FirstOrDefault();
 
             return asteroid ?? throw new EntityNotFoundException($"Asteroid with Id = {id} does not exist.");
         }
 
-        public Asteroid GetByTitle(string title)
+        public Asteroid GetByTitle(string name)
         {
-            Asteroid asteroid = this.asteroids.Where(a => a.Title == title).FirstOrDefault();
+            Asteroid asteroid = this.asteroids.Where(a => a.Name == name).FirstOrDefault();
 
-            return asteroid ?? throw new EntityNotFoundException($"Asteroid with title = {title} does not exist.");
+            return asteroid ?? throw new EntityNotFoundException($"Asteroid with title = {name} does not exist.");
         }
 
     }

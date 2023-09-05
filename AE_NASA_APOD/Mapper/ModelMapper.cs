@@ -9,10 +9,10 @@ namespace Mapper
         {
             return new GetAsteroidDTO
             {
-                Copyright = asteroid.Copyright,
-                Title = asteroid.Title,
-                DateTime = asteroid.DateTime,
-                Explanation = asteroid.Explanation,
+                Name = asteroid.Name,
+                EstimatedMaxDiameter = asteroid.EstimatedMaxDiameter,
+                VelocityKmH = asteroid.VelocityKmH,
+                DistanceKm = asteroid.DistanceKm,
 
             };
         }

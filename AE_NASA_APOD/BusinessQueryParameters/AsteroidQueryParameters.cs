@@ -2,13 +2,13 @@
 {
     public class AsteroidQueryParameters
     {
-        public string? Copyright { get; set; }
+        public string? Name { get; set; }
 
-        public string? Title { get; set; }
+        public double? EstimatedMaxDiameter { get; set; }
 
-        public DateTime? FromDateTime { get; set; }
+        public double? VelocityKmH { get; set; }
 
-        public DateTime? ToDateTime { get; set; }
+        public double Distance { get; set; }
 
         public string? SortBy { get; set; }
 

@@ -15,15 +15,14 @@
     }
 </style>
 
-<h2 class="yellow-green"><span class="custom-text-color-title">@this.Model.Title</h2>
+<h2 class="yellow-green"><span class="custom-text-color-title">@this.Model.Name</h2>
 
-<p class="margin12"><span class="custom-text-color-title"> Copyright: <span class="custom-text-color"> @this.Model.Copyright</span></p>
-<p class="margin12"><span class="custom-text-color-title"> Date: <span class="custom-text-color">@this.Model.DateTime</span></p>
-<p class="margin12"><span class="custom-text-color-title"> Explanation: <span class="custom-text-color">@this.Model.Explanation</span></p>
-<p class="margin12"><span class="custom-text-color-title"> HDURL: <span class="custom-text-color">@this.Model.HdUrl</span></p>
-<p class="margin12"><span class="custom-text-color-title"> MediaType: <span class="custom-text-color">@this.Model.MediaType</span></p>
-<p class="margin12"><span class="custom-text-color-title"> ServiceVersion: <span class="custom-text-color">@this.Model.ServiceVersion</span></p>
-<p class="margin12"><span class="custom-text-color-title"> Title: <span class="custom-text-color">@this.Model.Title</span></p>
-<p class="margin12"><span class="custom-text-color-title"> URL: <span class="custom-text-color">@this.Model.Url</span></p>
+<p class="margin12"><span class="custom-text-color-title"> URL: <span class="custom-text-color"> @this.Model.NasaJplUrl</span></p>
+<p class="margin12"><span class="custom-text-color-title"> Magnitude: <span class="custom-text-color">@this.Model.AbsoluteMagnitude</span></p>
+<p class="margin12"><span class="custom-text-color-title"> MaxDiameter: <span class="custom-text-color">@this.Model.EstimatedMaxDiameter</span></p>
+<p class="margin12"><span class="custom-text-color-title"> Hazardous: <span class="custom-text-color">@this.Model.Hazardous</span></p>
+<p class="margin12"><span class="custom-text-color-title"> ApproachDate: <span class="custom-text-color">@this.Model.CloseApproachDate</span></p>
+<p class="margin12"><span class="custom-text-color-title"> Velocity: <span class="custom-text-color">@this.Model.VelocityKmH</span></p>
+<p class="margin12"><span class="custom-text-color-title"> Distance: <span class="custom-text-color">@this.Model.DistanceKm</span></p>
 
 <a asp-controller="Asteroid" asp-action="Index" class="btn btn-primary ">Back</a>

@@ -23,6 +23,9 @@
     .filter-section {
         color: white;
         margin-bottom: 20px;
+
+    }
+
 </style>
 
 <h2 style="color: white;">ASTEROIDS</h2>
@@ -44,21 +47,27 @@
 
 <div class="table">
     <div class="header">
-        <div class="header-cell table-header">Copyright</div>
-        <div class="header-cell table-header">Title</div>
-        <div class="header-cell table-header">Date</div>
-        <div class="header-cell table-header">Summary</div>
+        <div class="header-cell table-header">Name</div>        
+        <div class="header-cell table-header">Hazardous</div>
+        <div class="header-cell table-header">AbsoluteMagnitude</div>
+        <div class="header-cell table-header">EstimatedMaxDiameter</div>        
+        <div class="header-cell table-header">VelocityKmH</div>
+        <div class="header-cell table-header">DistanceKm</div>
         <div class="header-cell table-header">Details</div>
+
     </div>
 
     @{
         foreach (var asteroid in this.Model)
         {
             <div class="row">
-                <div class="cell custom-text-color">@asteroid.Copyright</div>
-                <div class="cell custom-text-color">@asteroid.Title</div>
-                <div class="cell custom-text-color">@asteroid.DateTime</div>
-                <div class="cell custom-text-color">@asteroid.Explanation</div>
+                <div class="cell custom-text-color">@asteroid.Name</div>
+                <div class="cell custom-text-color">@asteroid.Hazardous</div>
+                <div class="cell custom-text-color">@asteroid.AbsoluteMagnitude</div>
+                <div class="cell custom-text-color">@asteroid.EstimatedMaxDiameter</div>
+                <div class="cell custom-text-color">@asteroid.VelocityKmH</div>
+                <div class="cell custom-text-color">@asteroid.DistanceKm</div>
+               
                 <div class="cell">
                     <a href="@($"/Asteroid/Details/{asteroid.Id}")" class="nav">Details</a>
                 </div>

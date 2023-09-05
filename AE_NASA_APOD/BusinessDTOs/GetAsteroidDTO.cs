@@ -7,14 +7,10 @@ namespace BusinessDTOs
         public int Id { get; set; }
 
         [StringLength(50, MinimumLength = 2, ErrorMessage = "The{0} must be between {1} and {2} characters long.")]
-        public string Copyright { get; set; }
+        public string Name { get; set; }
+        public double EstimatedMaxDiameter { get; set; }
+        public string VelocityKmH { get; set; }
+        public string DistanceKm { get; set; }
 
-        [StringLength(10000, MinimumLength = 2, ErrorMessage = "The{0} must be between {1} and {2} characters long.")]
-        public string Explanation { get; set; }
-        public DateTime DateTime { get; set; }
-        
-        [StringLength(1000, MinimumLength = 1, ErrorMessage = "The{0} must be between {1} and {2} characters long.")]
-        public string Title { get; set; }
-        
     }
 }

@@ -88,19 +88,25 @@ namespace AE_NASA_APOD.Controllers.MVC
 
                 // Add headers
                 worksheet.Cells["A1"].Value = "Id";
-                worksheet.Cells["B1"].Value = "Title";
-                worksheet.Cells["C1"].Value = "Copyright";
-                worksheet.Cells["D1"].Value = "Date";
-                worksheet.Cells["E1"].Value = "Summary";
+                worksheet.Cells["B1"].Value = "Name";
+                worksheet.Cells["C1"].Value = "NasaJplUrl";
+                worksheet.Cells["D1"].Value = "EstimatedMaxDiameter";
+                worksheet.Cells["E1"].Value = "Hazardous";
+                worksheet.Cells["F1"].Value = "VelocityKmH";
+                worksheet.Cells["G1"].Value = "DistanceKm";
+
 
                 int row = 2;
                 foreach (var asteroid in asteroids)
                 {
                     worksheet.Cells[row, 1].Value = asteroid.Id;
-                    worksheet.Cells[row, 2].Value = asteroid.Title;
-                    worksheet.Cells[row, 3].Value = asteroid.Copyright;
-                    worksheet.Cells[row, 4].Value = asteroid.DateTime.ToString();
-                    worksheet.Cells[row, 5].Value = asteroid.Explanation;
+                    worksheet.Cells[row, 2].Value = asteroid.Name;
+                    worksheet.Cells[row, 3].Value = asteroid.NasaJplUrl;
+                    worksheet.Cells[row, 4].Value = asteroid.EstimatedMaxDiameter;
+                    worksheet.Cells[row, 5].Value = asteroid.Hazardous;
+                    worksheet.Cells[row, 6].Value = asteroid.VelocityKmH;
+                    worksheet.Cells[row, 7].Value = asteroid.DistanceKm;
+
                     row++;
                 }
 
