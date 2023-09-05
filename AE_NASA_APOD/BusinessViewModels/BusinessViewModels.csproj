@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BusinessDTOs\BusinessDTOs.csproj" />
+    <ProjectReference Include="..\BusinessQueryParameters\BusinessQueryParameters.csproj" />
     <ProjectReference Include="..\DataAccessModels\DataAccessModels.csproj" />
   </ItemGroup>
 

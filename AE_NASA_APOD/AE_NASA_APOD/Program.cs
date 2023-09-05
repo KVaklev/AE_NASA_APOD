@@ -3,6 +3,7 @@ using BusinessServices.Models;
 using DataAccessRepositories.Contracts;
 using DataAccessRepositories.Models;
 using Mapper;
+using OfficeOpenXml;
 
 namespace AE_NASA_APOD
 {
@@ -11,6 +12,8 @@ namespace AE_NASA_APOD
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
             //builder.Services.AddDbContext<ApplicationContext>(options =>
             //{

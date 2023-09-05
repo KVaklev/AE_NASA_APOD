@@ -25,12 +25,6 @@
         margin-bottom: 20px;
 </style>
 
-<style>
-    .details-button {
-        color: yellowgreen; 
-    }
-</style>
-
 <h2 style="color: white;">ASTEROIDS</h2>
 
 <div class="filter-section">
@@ -42,6 +36,11 @@
     </form>
 </div>
 
+<form asp-controller="Asteroid" asp-action="ExportToXlsx" method="post">
+    <input type="submit" value="Export to XLSX" class="btn btn-primary" />
+</form>
+
+</br>
 
 <div class="table">
     <div class="header">
@@ -61,7 +60,7 @@
                 <div class="cell custom-text-color">@asteroid.DateTime</div>
                 <div class="cell custom-text-color">@asteroid.Explanation</div>
                 <div class="cell">
-                    <a href="@($"/Asteroid/Details/{asteroid.Id}")" class="nav details-button">Details</a>
+                    <a href="@($"/Asteroid/Details/{asteroid.Id}")" class="nav">Details</a>
                 </div>
             </div>
         }
