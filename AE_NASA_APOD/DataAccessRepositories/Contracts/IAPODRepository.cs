@@ -6,14 +6,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessServices.Contracts
+namespace DataAccessRepositories.Contracts
 {
-    public interface IAPODService
+    public interface IAPODRepository
     {
         List<APOD> GetAll();
 
         PaginatedList<APOD> FilterBy(APODQueryParameters queryParameters);
 
         APOD GetById(int id);
+
+        APOD GetByName(string name);
+
+        APOD GetByCopyright(string copyright);
+
+
+
     }
 }

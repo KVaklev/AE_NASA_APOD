@@ -27,9 +27,11 @@ namespace AE_NASA_APOD
 
             //Repositories
             builder.Services.AddSingleton<IAsteroidRepository, AsteroidRepository>();
+            builder.Services.AddSingleton<IAPODRepository, APODRepository>();
 
             //Services
             builder.Services.AddScoped<IAsteroidService, AsteroidService>();
+            builder.Services.AddScoped<IAPODService, APODService>();
             builder.Services.AddScoped<ModelMapper>();
             builder.Services.AddSwaggerGen();
 

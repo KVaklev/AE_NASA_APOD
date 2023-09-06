@@ -1,0 +1,92 @@
+﻿@using AE_NASA_APOD.Models
+@using DataAccessModels.Models
+@using BusinessQueryParameters;
+@model PaginatedList<APOD>
+
+<style>
+    .custom-text-color {
+        color: greenyellow;
+    }
+</style>
+
+<style>
+
+    .table-header {
+        background-color: #FFFFE0;
+        color: black;
+    }
+
+    .cell {
+        color: greenyellow;
+    }
+
+    .filter-section {
+        color: white;
+        margin-bottom: 20px;
+    }
+
+</style>
+
+<h2 style="color: white;">Astronomy Picture Of The Day</h2>
+
+<div class="filter-section">
+    <p>APOD Filter By</p>
+
+    <form asp-controller="Asteroid" asp-action="Index" method="get">
+        <input type="text" copyright="Copyright" />
+        <input type="submit" value="Search" class="btn btn-primary" />
+    </form>
+</div>
+
+</br>
+
+<div class="table">
+    <div class="header">        
+        <div class="header-cell table-header">Title</div>
+        <div class="header-cell table-header">Date</div>
+        <div class="header-cell table-header">Url</div>
+        
+    </div>
+
+    @{
+        foreach (var apod in this.Model)
+        {
+            <div class="row">                
+                <div class="cell custom-text-color">@apod.Title</div>
+                <div class="cell custom-text-color">@apod.Date</div>
+                <div class="cell custom-text-color">@apod.Url</div>
+                
+                <div class="cell">
+                    <a href="@($"/APOD/Details/{apod.Id}")" class="nav">Details</a>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+@{
+    string prevButtonState = this.Model.HasPrevPage ? "" : "disabled";
+    string nextButtonState = this.Model.HasNextPage ? "" : "disabled";
+
+}
+
+<a asp-controller="Asteroid" asp-action="Index" asp-route-PageNumber="@(this.Model.PageNumber-1)" class="btn btn-link @prevButtonState">Prev</a>
+
+@{
+    int currentPageNumber = this.Model.PageNumber;
+
+    for (int i = 1; i <= this.Model.TotalPages; i++)
+    {
+        if (i == currentPageNumber)
+        {
+            <span>@i</span>
+        }
+        else
+        {
+            <span><a asp-controller="APOD" asp-action="Index" asp-route-PageNumber="@i">@i</a></span>
+
+        }
+    }
+}
+<a asp-controller="APOD" asp-action="Index" asp-route-PageNumber="@(this.Model.PageNumber+1)" class="btn btn-link @nextButtonState">Next</a>
+

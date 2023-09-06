@@ -16,5 +16,15 @@ namespace Mapper
 
             };
         }
+
+        public GetAPODDTO Map(APOD apod)
+        {
+            return new GetAPODDTO
+            {
+                Title = apod.Title,
+                Url = apod.Url,
+            };
+        }
+        
     }
 }
