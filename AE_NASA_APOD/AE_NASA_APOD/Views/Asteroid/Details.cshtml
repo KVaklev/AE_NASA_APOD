@@ -1,7 +1,6 @@
 ﻿@using AE_NASA_APOD.Models
-@using DataAccessModels.Models
 @using BusinessQueryParameters;
-@model Asteroid
+@model AsteroidViewModel
 
 <style>
     .custom-text-color {
@@ -15,14 +14,7 @@
     }
 </style>
 
-<h2 class="yellow-green"><span class="custom-text-color-title">@this.Model.Name</h2>
 
-<p class="margin12"><span class="custom-text-color-title"> URL: <span class="custom-text-color"> @this.Model.NasaJplUrl</span></p>
-<p class="margin12"><span class="custom-text-color-title"> Magnitude: <span class="custom-text-color">@this.Model.AbsoluteMagnitude</span></p>
-<p class="margin12"><span class="custom-text-color-title"> MaxDiameter: <span class="custom-text-color">@this.Model.EstimatedMaxDiameter</span></p>
-<p class="margin12"><span class="custom-text-color-title"> Hazardous: <span class="custom-text-color">@this.Model.Hazardous</span></p>
-<p class="margin12"><span class="custom-text-color-title"> ApproachDate: <span class="custom-text-color">@this.Model.CloseApproachDate</span></p>
-<p class="margin12"><span class="custom-text-color-title"> Velocity: <span class="custom-text-color">@this.Model.VelocityKmH</span></p>
-<p class="margin12"><span class="custom-text-color-title"> Distance: <span class="custom-text-color">@this.Model.DistanceKm</span></p>
+<p class="margin12"><span class="custom-text-color-title"> URL: <span class="custom-text-color"> @this.Model.FirstApproachDate</span></p>
 
 <a asp-controller="Asteroid" asp-action="Index" class="btn btn-primary ">Back</a>

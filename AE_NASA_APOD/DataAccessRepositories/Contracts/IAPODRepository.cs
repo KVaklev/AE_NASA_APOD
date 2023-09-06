@@ -10,9 +10,9 @@ namespace DataAccessRepositories.Contracts
 {
     public interface IAPODRepository
     {
-        List<APOD> GetAll();
+        Task<List<APOD>> GetAll();
 
-        PaginatedList<APOD> FilterBy(APODQueryParameters queryParameters);
+        Task<PaginatedList<APOD>> FilterBy(APODQueryParameters queryParameters);
 
         APOD GetById(int id);
 

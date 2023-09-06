@@ -10,9 +10,9 @@ namespace BusinessServices.Contracts
 {
     public interface IAPODService
     {
-        List<APOD> GetAll();
+        Task<List<APOD>> GetAll();
 
-        PaginatedList<APOD> FilterBy(APODQueryParameters queryParameters);
+        Task<PaginatedList<APOD>> FilterBy(APODQueryParameters queryParameters);
 
         APOD GetById(int id);
     }

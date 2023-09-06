@@ -10,10 +10,9 @@ namespace Mapper
             return new GetAsteroidDTO
             {
                 Name = asteroid.Name,
-                EstimatedMaxDiameter = asteroid.EstimatedMaxDiameter,
-                VelocityKmH = asteroid.VelocityKmH,
-                DistanceKm = asteroid.DistanceKm,
-
+                EstimatedMaxDiameter = asteroid.EstimatedDiameter.Kilometers.MaximumDiameter,
+                //VelocityKmH = asteroid.VelocityKmH,
+                //DistanceKm = asteroid.DistanceKm,
             };
         }
 

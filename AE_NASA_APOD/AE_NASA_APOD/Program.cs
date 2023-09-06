@@ -1,6 +1,7 @@
 using BusinessServices.Contracts;
 using BusinessServices.Models;
 using DataAccessRepositories.Contracts;
+using DataAccessRepositories.Helpers;
 using DataAccessRepositories.Models;
 using Mapper;
 using OfficeOpenXml;
@@ -28,6 +29,9 @@ namespace AE_NASA_APOD
             //Repositories
             builder.Services.AddSingleton<IAsteroidRepository, AsteroidRepository>();
             builder.Services.AddSingleton<IAPODRepository, APODRepository>();
+
+            //Http helper
+            builder.Services.AddSingleton<INasaHttpClientHelper, NasaHttpClientHelper>();
 
             //Services
             builder.Services.AddScoped<IAsteroidService, AsteroidService>();

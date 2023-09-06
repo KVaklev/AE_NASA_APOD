@@ -18,19 +18,20 @@ namespace BusinessServices.Models
         {
             this.apodRepository = apodRepository;
         }
-        public PaginatedList<APOD> FilterBy(APODQueryParameters queryParameters)
+        public async Task<List<APOD>> GetAll()
         {
-            return this.apodRepository.FilterBy(queryParameters);
+            return await this.apodRepository.GetAll();
+        }
+        public async Task<PaginatedList<APOD>> FilterBy(APODQueryParameters queryParameters)
+        {
+            return await this.apodRepository.FilterBy(queryParameters);
         }
         public APOD GetById(int id)
         {
             return this.apodRepository.GetById(id);
         }
 
-        public List<APOD> GetAll()
-        {
-            return this.apodRepository.GetAll();
-        }
+
 
     }
 }

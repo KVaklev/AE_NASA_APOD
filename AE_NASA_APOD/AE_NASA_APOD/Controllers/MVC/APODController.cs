@@ -15,9 +15,9 @@ namespace AE_NASA_APOD.Controllers.MVC
         }
 
         [HttpGet]
-        public IActionResult Index([FromQuery] APODQueryParameters apodQueryParameters)
+        public async Task<IActionResult> Index([FromQuery] APODQueryParameters apodQueryParameters)
         {
-            List<APOD> apods = this.apodService.FilterBy(apodQueryParameters);  
+            List<APOD> apods = await this.apodService.FilterBy(apodQueryParameters);  
 
             return View(apods);
         }

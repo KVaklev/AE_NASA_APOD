@@ -18,15 +18,15 @@ namespace BusinessServices.Models
         {
             this.asteroidRepository = asteroidRepository;
         }
-        public List<Asteroid> GetAll()
+        public async Task<List<Asteroid>> GetAll()
         {
-            return this.asteroidRepository.GetAll();
+            return await this.asteroidRepository.GetAll();
         }
-        public PaginatedList<Asteroid> FilterBy(AsteroidQueryParameters queryParameters)
+        public async Task<PaginatedList<Asteroid>> FilterBy(AsteroidQueryParameters queryParameters)
         {
-            return this.asteroidRepository.FilterBy(queryParameters);
+            return await this.asteroidRepository.FilterBy(queryParameters);
         }
-        public Asteroid GetById(int id)
+        public Asteroid GetById(string id)
         {
             return this.asteroidRepository.GetById(id);
         }

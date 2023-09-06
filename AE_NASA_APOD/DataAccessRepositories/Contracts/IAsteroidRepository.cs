@@ -10,11 +10,11 @@ namespace DataAccessRepositories.Contracts
 {
     public interface IAsteroidRepository
     {
-        List<Asteroid> GetAll();
+        Task<List<Asteroid>> GetAll();
 
-        PaginatedList<Asteroid> FilterBy(AsteroidQueryParameters queryParameters);
+        Task<PaginatedList<Asteroid>> FilterBy(AsteroidQueryParameters queryParameters);
 
-        Asteroid GetById(int id);
+        Asteroid GetById(string id);
 
         Asteroid GetByTitle(string title);
 

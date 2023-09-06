@@ -1,7 +1,6 @@
-﻿@using AE_NASA_APOD.Models
-@using DataAccessModels.Models
-@using BusinessQueryParameters;
-@model PaginatedList<Asteroid>
+﻿@using AE_NASA_APOD.Models;
+@using DataAccessModels.Models;
+@model PaginatedList<AsteroidViewModel>
 
 <style>
     .custom-text-color {
@@ -30,14 +29,14 @@
 
 <h2 style="color: white;">ASTEROIDS</h2>
 
-<div class="filter-section">
+@*<div class="filter-section">
     <p>Asteroid Filter By</p>
 
     <form asp-controller="Asteroid" asp-action="Index" method="get">
         <input type="text" copyright="Copyright" />
         <input type="submit" value="Search" class="btn btn-primary" />
     </form>
-</div>
+</div>*@
 
 <form asp-controller="Asteroid" asp-action="ExportToXlsx" method="post">
     <input type="submit" value="Export to XLSX" class="btn btn-primary" />
@@ -47,30 +46,31 @@
 
 <div class="table">
     <div class="header">
+        <div class="header-cell table-header">Id</div>
         <div class="header-cell table-header">Name</div>        
-        <div class="header-cell table-header">Hazardous</div>
+        <div class="header-cell table-header"> NasaJplUrl</div>
+        <div class="header-cell table-header">FirstApproachDate</div>
         <div class="header-cell table-header">AbsoluteMagnitude</div>
-        <div class="header-cell table-header">EstimatedMaxDiameter</div>        
+        <div class="header-cell table-header">MaximumDiameterKm</div>
+        <div class="header-cell table-header">Hazardous</div>
         <div class="header-cell table-header">VelocityKmH</div>
-        <div class="header-cell table-header">DistanceKm</div>
-        <div class="header-cell table-header">Details</div>
-
+       
     </div>
 
     @{
         foreach (var asteroid in this.Model)
         {
             <div class="row">
+                <div class="cell custom-text-color">@asteroid.Id</div>
                 <div class="cell custom-text-color">@asteroid.Name</div>
-                <div class="cell custom-text-color">@asteroid.Hazardous</div>
+                <div class="cell custom-text-color">@asteroid.NasaJplUrl</div>
+                <div class="cell custom-text-color">@asteroid.FirstApproachDate</div>
                 <div class="cell custom-text-color">@asteroid.AbsoluteMagnitude</div>
-                <div class="cell custom-text-color">@asteroid.EstimatedMaxDiameter</div>
-                <div class="cell custom-text-color">@asteroid.VelocityKmH</div>
-                <div class="cell custom-text-color">@asteroid.DistanceKm</div>
-               
-                <div class="cell">
-                    <a href="@($"/Asteroid/Details/{asteroid.Id}")" class="nav">Details</a>
-                </div>
+                <div class="cell custom-text-color">@asteroid.MaximumDiameter</div>
+                <div class="cell custom-text-color">@asteroid.Hazardous</div>
+                <div class="cell custom-text-color">@asteroid.Velocity</div>
+
+
             </div>
         }
     }

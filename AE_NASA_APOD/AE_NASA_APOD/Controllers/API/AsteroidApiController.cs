@@ -22,32 +22,15 @@ namespace AE_NASA_APOD.Controllers.API
         }
 
         [HttpGet("")]
-        public IActionResult GetAsteroids([FromQuery] AsteroidQueryParameters queryParameters)
+        public async Task<IActionResult> GetAsteroids([FromQuery] AsteroidQueryParameters queryParameters)
         {
-            List<Asteroid> result = this.asteroidService.FilterBy(queryParameters);
+            List<Asteroid> result = await this.asteroidService.FilterBy(queryParameters);
 
             List<GetAsteroidDTO> getAsteroidDTOs = result.Select(asteroid => mapper.Map(asteroid)).ToList();
 
             return this.StatusCode(StatusCodes.Status200OK, getAsteroidDTOs);
         }
 
-        [HttpGet("{id}")]
-
-        public IActionResult GetAsteroidById(int id)
-        {
-            try
-            { 
-                Asteroid asteroid = this.asteroidService.GetById(id);
-
-                GetAsteroidDTO getAsteroidDTO = mapper.Map(asteroid);
-
-                return this.StatusCode(StatusCodes.Status200OK, getAsteroidDTO);
-
-            }
-            catch (EntityNotFoundException e)
-            {
-                return this.StatusCode(StatusCodes.Status404NotFound, e.Message);
-            }
-        }
+        
     }
 }

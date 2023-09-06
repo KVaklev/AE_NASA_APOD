@@ -1,11 +1,8 @@
-﻿using BusinessQueryParameters;
+﻿using BusinessExceptions;
+using BusinessQueryParameters;
 using DataAccessModels.Models;
 using DataAccessRepositories.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Net.Http.Json;
 
 namespace DataAccessRepositories.Models
 {
@@ -13,90 +10,60 @@ namespace DataAccessRepositories.Models
     {
         private List<APOD> apods;
 
-        public APODRepository()
+        private INasaHttpClientHelper nasaRepository;
+
+        public APODRepository(INasaHttpClientHelper nasaRepository)
         {
-            this.apods = new List<APOD>()
-            {
-               new APOD
-                {
-                    Id = 1,
-                    Date = "2023-09-02",
-                    Explanation = "These cosmic clouds have blossomed 1,300 light-years away in the fertile starfields of the constellation Cepheus.",
-                    Title = "The Iris Nebula",
-                    Url = "https://apod.nasa.gov/apod/image/2309/SuperBlueMoon_Saragozza_960.jpg"
-                },
-                new APOD
-                {
-                    Id = 2,
-                    Date = "2023-08-02",
-                    Explanation = "Ceres is the largest asteroid in the asteroid belt between Mars and Jupiter. It's also classified as a dwarf planet and was the first object to be discovered in the asteroid belt. It was discovered in 1801 by Italian astronomer Giuseppe Piazzi.",
-                    Title = "Ceres",
-                    Url = "https://apod.nasa.gov/apod/image/2309/SuperBlueMoon_Saragozza_960.jpg"
-                },
-                new APOD
-                {
-                    Id = 3,
-                    Date = "2023-07-02",
-                    Explanation = "Vesta is the second-largest asteroid in the asteroid belt. It was discovered in 1807 by German astronomer Heinrich Wilhelm Olbers. NASA's Dawn spacecraft orbited and studied Vesta from 2011 to 2012, providing valuable insights into its composition and history.",
-                    Title = "Vesta",
-                    Url = "https://apod.nasa.gov/apod/image/2309/SuperBlueMoon_Saragozza_960.jpg"
-                },
-                new APOD
-                {
-                    Id = 4,
-                    Date = "2023-06-02",
-                    Explanation = "Pallas is the third-largest asteroid and was discovered in 1802 by German astronomer Heinrich Wilhelm Olbers. It's named after Pallas Athena, the Greek goddess of wisdom.",
-                    Title = "Pallas",
-                    Url = "https://apod.nasa.gov/apod/image/2309/SuperBlueMoon_Saragozza_960.jpg"
-                },
-                new APOD
-                {
-                    Id = 5,
-                    Date = "2023-05-02",
-                    Explanation = "Juno is one of the larger asteroids and was discovered in 1804 by German astronomer Karl Harding. It is named after the Roman goddess Juno, who was the queen of the gods.",
-                    Title = "Juno",
-                    Url = "https://apod.nasa.gov/apod/image/2309/SuperBlueMoon_Saragozza_960.jpg"
-                }
-            };
+            this.nasaRepository = nasaRepository; ;
 
         }
-        public List<APOD> GetAll()
+        public async Task<List<APOD>> GetAll()
         {
-            return this.apods;
+            var response = await nasaRepository.GetPictureOfTheDay();
+
+            //var result = await response.Content.ReadFromJsonAsync<NeoResult>();
+
+            //var asteroids = result.NearEarthObjects;
+
+            return apods;
         }
 
-        public PaginatedList<APOD> FilterBy(APODQueryParameters queryParameters)
+        public async Task<PaginatedList<APOD>> FilterBy(APODQueryParameters queryParameters)
         {
-            List<APOD> result = this.apods;
+            //var response = await nasaRepository.GetPictureOfTheDay();
+
+            //var result = await response.Content.ReadFromJsonAsync<NeoResult>();
+
+            //var apods = result.NearEarthObjects;
 
             if (!string.IsNullOrEmpty(queryParameters.Copyright))
             {
-                result = result.FindAll(apod=> apod.Copyright == queryParameters.Copyright);
+                apods = apods.FindAll(apod=> apod.Copyright == queryParameters.Copyright);
             }
 
             if (!string.IsNullOrEmpty(queryParameters.Title))
             {
-                result = result.FindAll(apod=> apod.Title == queryParameters.Title);    
+                apods = apods.FindAll(apod=> apod.Title == queryParameters.Title);    
             }
 
             if (!string.IsNullOrEmpty(queryParameters.SortBy))
             {
-                if (queryParameters.SortBy.Equals("name", StringComparison.InvariantCultureIgnoreCase))
+                if (queryParameters.SortBy.Equals("title", StringComparison.InvariantCultureIgnoreCase))
                 {
-                    result = result.OrderBy(asteroid => asteroid.Copyright).ToList();
+                    apods = apods.OrderBy(apod => apod.Title).ToList();
                 }
 
                 if (!string.IsNullOrEmpty(queryParameters.SortOrder) && queryParameters.SortOrder.Equals("desc", StringComparison.InvariantCultureIgnoreCase))
                 {
-                    result.Reverse();
+                    apods.Reverse();
                 }
             }
 
-            int totalPages = (result.Count() + 1) / queryParameters.PageSize;
+            int totalPages = (apods.Count() + 1) / queryParameters.PageSize;
 
-            result = Paginate(result, queryParameters.PageNumber, queryParameters.PageSize);
+            apods = Paginate(apods, queryParameters.PageNumber, queryParameters.PageSize);
 
-            return new PaginatedList<APOD>(result, totalPages, queryParameters.PageNumber);
+            return new PaginatedList<APOD>(apods, totalPages, queryParameters.PageNumber);
         }
 
         public static List<APOD> Paginate(List<APOD> result, int pageNumber, int pageSize)
@@ -124,6 +91,7 @@ namespace DataAccessRepositories.Models
             return apod ?? throw new EntryPointNotFoundException($"APOD with copyright = {copyright} does not exist.");
         }
 
+       
     }
 }
 
