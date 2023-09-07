@@ -1,92 +1,102 @@
 # AE_NASA_APOD
 
+_Welcome to NASA Astronomy Picture of the Day (APOD), an innovative web application crafted to ignite your fascination with the universe. This multifaceted platform not only delivers breathtaking astronomical images but also serves as a comprehensive resource for detailed information about asteroids._
 
+## Project Description
 
-## Getting started
+**Built using the MVC architecture and powered by ASP.NET Core, this project harnesses the NASA REST API (https://api.nasa.gov) to provide a seamless experience. Users can explore the mysteries of the universe, access data about asteroids, and conveniently export information in .xlsx format. Additionally, the website offers the unique feature of browsing the Astronomy Picture of the Day, enabling users to journey through past celestial wonders.
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+With a commitment to both scientific exploration and user-friendly functionality, APOD is your gateway to the wonders of the cosmos and the world of asteroids, all in one interactive platform."!
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+## Features
 
-## Add your files
+1. The user **seamlessly browses** through the application.
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+2. Users can gain **access to the NASA API** via the link provided on the homepage.
 
-```
-cd existing_repo
-git remote add origin https://gitlab.com/KVaklev/ae_nasa_apod.git
-git branch -M main
-git push -uf origin main
-```
+3. Home page headers for quick access:
 
-## Integrate with your tools
+- **Home** - serves as the primary entry point to the application.
 
-- [ ] [Set up project integrations](https://gitlab.com/KVaklev/ae_nasa_apod/-/settings/integrations)
+- **Asteroids** - The 'Asteroids' header brings users to a page where comprehensive information about asteroids is presented in a structured table format. This view incorporates pagination, enabling users to easily navigate forward and backward through the results. Additionally, a link is available for users to access NASA's website for more in-depth information about a particular asteroid. Finally, an essential feature allows users to export all the data in convenient .xlsx format.
 
-## Collaborate with your team
+- **APOD Gallery** - Another core feature of the application is 'APOD' (Astronomy Picture of the Day), which presents users with the daily celestial image, accompanied by detailed information including the title, date of publication, URL, and HDURL for high-definition images. This feature is versatile, accommodating both images and videos. In the case of a video, users can seamlessly open and view it within the application.
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+Furthermore, the application incorporates a search functionality, allowing users to explore past images or videos by specifying their respective publishing dates."
 
-## Test and Deploy
+- **About** - In the 'About' section, a brief expression of gratitude from the creator is presented.
 
-Use the built-in continuous integration in GitLab.
+- **Developer API** - The 'Developer API' directs users to the Swagger resources.The implementation is simple and is introduced for potential future scalability and extensibility purposes.
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+## Technologies Used
 
-***
+Front-end: HTML, CSS
+Back-end: ASP.NET Core, ASP.NET MVC
+IDE: Visual Studio 2022
+REST API: ASP.NET Core Web API
+Documentation: Swagger
 
-# Editing this README
+## How to Set Up and Run the Project Locally - follow these steps:
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
+1. Clone the GitLab Repository
+2. Install Dependencies and Packages
+4. Build and Run the Project - use the appropriate commands to build and run the project.
+5. Access the Application - once the project is running locally, you can access the application by opening a web browser and entering the appropriate URL.
 
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+## Project Hierarchy and Entity Descriptions
 
-## Name
-Choose a self-explaining name for your project.
+| Layer 	  | Class Libraries  | Description                                                                                                |
+|-----------------|------------------|------------------------------------------------------------------------------------------------------------|
+| 1. Business     | Dto              | Contains Data Transfer Objects used to transfer data between different layers of the application.          |
+|       	  | QueryParameters  | Provides mapping functionality to map objects between different layers or models.                          |                                                                                |                                                                    
+|       	  | Mapper           | Defines query parameters for filtering, sorting, and pagination in data retrieval operations.              |
+|       	  | Services         | Implements business logic and handles the interaction between the presentation layer and data access layer.|
+|       	  |                  |                                                                                                            |
+|      		  |                  |                                                                                                            |
+|                 |                  |                                                                                                            |
+| 2. DataAccess   | Models	     | Contains data models representing the entities stored in the database - APOD, Asteroid                     |
+|		  | Repositories     | Implements the repository pattern to encapsulate data access logic for each model.                         |
+|		  |	-Contracts   | - Defines interfaces for the repositories, specifying the available operations.                            |
+|		  |	-Helpers     | - Represents the connection with NASA API resources.                                                       |
+|		  |	-Models      | - Methods implementation for the main features such as get picture of the day, GetAPODByDate               |
+|                 |                  |                                                                                                            |
+| 3. Presentation |wwwroot	     | Stores static files such as CSS and image files used by the presentation layer.                            |     
+|		  |Controllers       | Handles requests from the client-side and coordinates the flow of data between the layers.                 |
+|                 |     -Api         | - Contains controllers that implement the RESTful API endpoints for the application.                       |
+|                 |     -MVC         | - Contains controllers that handle server-side rendering of views.                                         |
+|		  |Views             | Contains the views responsible for rendering the user interface and presenting data to the end-user.       |
+|		  |Helpers           | Provides helper classes or methods that assist in rendering views or performing other related tasks.       |
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+#### Home Page
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+![N|Solid](https://i.postimg.cc/0N1wwwFp/HomePage.png)
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+### Asteroids Table
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+![N|Solid](https://i.postimg.cc/QMDFtrKm/Asteroids-Details.png)
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+### Asteroid Data in XLSX format
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+![N|Solid](https://i.postimg.cc/cLRJP5kn/Asteroids-Data-XLSX.png)
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+### Astronomy Picture Of The Day (APOD)
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+![N|Solid](https://i.postimg.cc/2jLL2TY4/Astronomy-Picture-Of-The-Day.png)
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+### APOD for Past Period 
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+![N|Solid](https://i.postimg.cc/FHNfF4LZ/APODPast-Date.png)
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+## Credits
+
+This project was created by Kristian Vaklev:
+
+| Contacts | Email |
+| ------   | ----- |
+| Kristian Vaklev | kristian.vaklev@yahoo.com |
 
 ## License
-For open source projects, say how it is licensed.
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for detail
+
+
