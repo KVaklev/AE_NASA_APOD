@@ -45,6 +45,8 @@ namespace AE_NASA_APOD.Controllers.MVC
                         Title = apodData.Title,
                         Url = apodData.Url
                     };
+
+                    return View(apodViewModel);
                 }
                 else
                 {
