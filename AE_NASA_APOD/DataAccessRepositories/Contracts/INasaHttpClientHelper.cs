@@ -7,5 +7,7 @@ namespace DataAccessRepositories.Contracts
         public Task<HttpResponseMessage> GetAllAsteriodsResponse();
 
         public Task<HttpResponseMessage> GetPictureOfTheDay();
+
+        public Task<HttpResponseMessage> GetAPODByDate(DateTime? date);
     }
 }

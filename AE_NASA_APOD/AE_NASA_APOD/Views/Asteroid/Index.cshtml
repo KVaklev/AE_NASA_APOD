@@ -1,4 +1,4 @@
-﻿@using AE_NASA_APOD.Models;
+﻿@using AE_NASA_APOD.ViewModels;
 @using DataAccessModels.Models;
 @model PaginatedList<AsteroidViewModel>
 
@@ -29,14 +29,6 @@
 
 <h2 style="color: white;">ASTEROIDS</h2>
 
-@*<div class="filter-section">
-    <p>Asteroid Filter By</p>
-
-    <form asp-controller="Asteroid" asp-action="Index" method="get">
-        <input type="text" copyright="Copyright" />
-        <input type="submit" value="Search" class="btn btn-primary" />
-    </form>
-</div>*@
 
 <form asp-controller="Asteroid" asp-action="ExportToXlsx" method="post">
     <input type="submit" value="Export to XLSX" class="btn btn-primary" />
@@ -57,22 +49,23 @@
        
     </div>
 
-    @{
-        foreach (var asteroid in this.Model)
-        {
-            <div class="row">
-                <div class="cell custom-text-color">@asteroid.Id</div>
-                <div class="cell custom-text-color">@asteroid.Name</div>
-                <div class="cell custom-text-color">@asteroid.NasaJplUrl</div>
-                <div class="cell custom-text-color">@asteroid.FirstApproachDate</div>
-                <div class="cell custom-text-color">@asteroid.AbsoluteMagnitude</div>
-                <div class="cell custom-text-color">@asteroid.MaximumDiameter</div>
-                <div class="cell custom-text-color">@asteroid.Hazardous</div>
-                <div class="cell custom-text-color">@asteroid.Velocity</div>
-
-
+    @foreach (var asteroid in this.Model)
+    {
+        <div class="row">
+            <div class="cell custom-text-color">@asteroid.Id</div>
+            <div class="cell custom-text-color">@asteroid.Name</div>
+            <div class="cell custom-text-color">
+                @if (!string.IsNullOrEmpty(asteroid.NasaJplUrl))
+                {
+                    <a href="@asteroid.NasaJplUrl" target="_blank">Link</a>
+                }                
             </div>
-        }
+            <div class="cell custom-text-color">@asteroid.FirstApproachDate</div>
+            <div class="cell custom-text-color">@asteroid.AbsoluteMagnitude</div>
+            <div class="cell custom-text-color">@asteroid.MaximumDiameter</div>
+            <div class="cell custom-text-color">@asteroid.Hazardous</div>
+            <div class="cell custom-text-color">@asteroid.Velocity</div>
+        </div>
     }
 </div>
 

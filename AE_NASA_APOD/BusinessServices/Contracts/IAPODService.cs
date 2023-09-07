@@ -1,19 +1,16 @@
-﻿using BusinessQueryParameters;
-using DataAccessModels.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System;
 using System.Threading.Tasks;
+using BusinessQueryParameters;
+using DataAccessModels.Models;
 
 namespace BusinessServices.Contracts
 {
     public interface IAPODService
     {
-        Task<List<APOD>> GetAll();
+        Task<APOD> GetPictureOfTheDay();
 
-        Task<PaginatedList<APOD>> FilterBy(APODQueryParameters queryParameters);
+        Task<APOD> GetAPODByDate(DateTime date);
 
-        APOD GetById(int id);
+        Task<List<APOD>> FilterBy(APODQueryParameters queryParameters);
     }
 }

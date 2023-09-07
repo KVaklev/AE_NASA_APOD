@@ -10,6 +10,8 @@ namespace BusinessQueryParameters
     {
         public string Copyright { get; set; }
 
+        public DateTime Date { get; set; }
+
         public string Title { get; set; }
 
         public string? SortBy { get; set; }

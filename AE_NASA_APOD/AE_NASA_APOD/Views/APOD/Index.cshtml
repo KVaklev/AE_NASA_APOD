@@ -1,92 +1,51 @@
-﻿@using AE_NASA_APOD.Models
-@using DataAccessModels.Models
-@using BusinessQueryParameters;
-@model PaginatedList<APOD>
-
-<style>
-    .custom-text-color {
-        color: greenyellow;
-    }
-</style>
-
-<style>
-
-    .table-header {
-        background-color: #FFFFE0;
-        color: black;
-    }
-
-    .cell {
-        color: greenyellow;
-    }
-
-    .filter-section {
-        color: white;
-        margin-bottom: 20px;
-    }
-
-</style>
+﻿@using AE_NASA_APOD.ViewModels;
+@using DataAccessModels.Models;
+@model APODViewModel;
 
 <h2 style="color: white;">Astronomy Picture Of The Day</h2>
 
-<div class="filter-section">
-    <p>APOD Filter By</p>
-
-    <form asp-controller="Asteroid" asp-action="Index" method="get">
-        <input type="text" copyright="Copyright" />
-        <input type="submit" value="Search" class="btn btn-primary" />
-    </form>
-</div>
-
-</br>
-
-<div class="table">
-    <div class="header">        
-        <div class="header-cell table-header">Title</div>
-        <div class="header-cell table-header">Date</div>
-        <div class="header-cell table-header">Url</div>
-        
+<!-- Filter Form -->
+<form asp-controller="Home" asp-action="NASAAPOD" method="get">
+    <div class="form-group">
+        <label for="date" style="color: antiquewhite;">Select a date:</label>
+        <br />
+        <!-- Use HTML5 date input -->
+        <input type="date" id="date" name="date" class="form-control" value="@Model.Date.ToString("yyyy-MM-dd")" />
     </div>
+    <br />
+    <button type="submit" class="btn btn-primary" style="color: antiquewhite;">Get APOD for Date</button>
+</form>
+<br />
 
-    @{
-        foreach (var apod in this.Model)
-        {
-            <div class="row">                
-                <div class="cell custom-text-color">@apod.Title</div>
-                <div class="cell custom-text-color">@apod.Date</div>
-                <div class="cell custom-text-color">@apod.Url</div>
-                
-                <div class="cell">
-                    <a href="@($"/APOD/Details/{apod.Id}")" class="nav">Details</a>
-                </div>
-            </div>
-        }
-    }
-</div>
-
-@{
-    string prevButtonState = this.Model.HasPrevPage ? "" : "disabled";
-    string nextButtonState = this.Model.HasNextPage ? "" : "disabled";
-
+<!-- Display APOD Information -->
+@if (Model.Date != null)
+{
+    <div>
+        <strong style="color: antiquewhite;">Title:</strong> <a href="@Model.Url" style="color: yellowgreen;">@Model.Title</a>
+    </div>
+    <div>
+        <strong style="color: antiquewhite;">Date:</strong> <span style="color: yellowgreen;">@Model.Date.ToString("dddd, dd MMMM yyyy")</span>
+    </div>
+    <div>
+        <strong style="color: antiquewhite;">URL:</strong> <a href="@Model.Url" style="color: cadetblue;">@Model.Url</a>
+    </div>
+    <div>
+        <p style="color: navajowhite;">@Model.Explanation</p>
+    </div>
+    <div>
+        <strong style="color: antiquewhite;">HD URL:</strong> <a href="@Model.HdUrl" style="color: cadetblue;">@Model.HdUrl</a>
+    </div>
+    <div>
+        <strong style="color: antiquewhite;">Media Type:</strong> <a href="@Model.Media_Type" style="color: yellowgreen;">@Model.Media_Type</a>
+    </div>
+    <div>
+        <strong style="color: antiquewhite;">Copyright:</strong> <a href="@Model.Copyright" style="color: yellowgreen;">@Model.Copyright</a>
+    </div>
+    <div>
+        <strong style="color: antiquewhite;">Image:</strong>
+        <img src="@Model.Url" alt="@Model.Title" />
+    </div>
+    <br />
 }
 
-<a asp-controller="Asteroid" asp-action="Index" asp-route-PageNumber="@(this.Model.PageNumber-1)" class="btn btn-link @prevButtonState">Prev</a>
-
-@{
-    int currentPageNumber = this.Model.PageNumber;
-
-    for (int i = 1; i <= this.Model.TotalPages; i++)
-    {
-        if (i == currentPageNumber)
-        {
-            <span>@i</span>
-        }
-        else
-        {
-            <span><a asp-controller="APOD" asp-action="Index" asp-route-PageNumber="@i">@i</a></span>
-
-        }
-    }
-}
-<a asp-controller="APOD" asp-action="Index" asp-route-PageNumber="@(this.Model.PageNumber+1)" class="btn btn-link @nextButtonState">Next</a>
-
+<a asp-controller="Home" asp-action="Index" class="btn btn-primary" style="color: antiquewhite;">Back to Home</a>

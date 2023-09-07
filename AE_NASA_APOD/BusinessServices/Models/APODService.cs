@@ -4,8 +4,6 @@ using DataAccessModels.Models;
 using DataAccessRepositories.Contracts;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace BusinessServices.Models
@@ -18,20 +16,20 @@ namespace BusinessServices.Models
         {
             this.apodRepository = apodRepository;
         }
-        public async Task<List<APOD>> GetAll()
+
+        public async Task<APOD> GetPictureOfTheDay()
         {
-            return await this.apodRepository.GetAll();
-        }
-        public async Task<PaginatedList<APOD>> FilterBy(APODQueryParameters queryParameters)
-        {
-            return await this.apodRepository.FilterBy(queryParameters);
-        }
-        public APOD GetById(int id)
-        {
-            return this.apodRepository.GetById(id);
+            return await apodRepository.GetPictureOfTheDay();
         }
 
+        public async Task<APOD> GetAPODByDate(DateTime date)
+        {
+            return await apodRepository.GetAPODByDate(date);
+        }
 
-
+        public async Task<List<APOD>> FilterBy(APODQueryParameters queryParameters)
+        {
+            return await apodRepository.FilterBy(queryParameters);
+        }
     }
 }

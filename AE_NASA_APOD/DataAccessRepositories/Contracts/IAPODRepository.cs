@@ -10,17 +10,10 @@ namespace DataAccessRepositories.Contracts
 {
     public interface IAPODRepository
     {
-        Task<List<APOD>> GetAll();
+        Task<APOD> GetPictureOfTheDay();
 
-        Task<PaginatedList<APOD>> FilterBy(APODQueryParameters queryParameters);
+        Task<APOD> GetAPODByDate(DateTime date);
 
-        APOD GetById(int id);
-
-        APOD GetByName(string name);
-
-        APOD GetByCopyright(string copyright);
-
-
-
+        Task<List<APOD>> FilterBy(APODQueryParameters queryParameters);
     }
 }

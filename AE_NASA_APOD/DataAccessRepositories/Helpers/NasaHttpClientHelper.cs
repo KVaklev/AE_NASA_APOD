@@ -11,7 +11,7 @@ namespace DataAccessRepositories.Helpers
     {
         private static readonly HttpClient client = new HttpClient();
 
-        private const string apiKey = "7AFWJXgBtX6aYUuLhuYuGnG68YceR7phkkNfrXBx";
+        public const string apiKey = "7AFWJXgBtX6aYUuLhuYuGnG68YceR7phkkNfrXBx";
 
         public async Task<HttpResponseMessage> GetAllAsteriodsResponse()
         {
@@ -20,11 +20,26 @@ namespace DataAccessRepositories.Helpers
 
         public async Task<HttpResponseMessage> GetPictureOfTheDay()
         {
-            // TODO: change to the correct api url
             return await client.GetAsync($"https://api.nasa.gov/planetary/apod?api_key={apiKey}");
+        }        
 
-            
+        public async Task<HttpResponseMessage> GetAPODByDate(DateTime? date)
+        {
+            if (date.HasValue)
+            {
+                string formattedDate = date.Value.ToString("yyyy-MM-dd");
+
+                // Construct the URL with the formatted date and your API key
+                string apiUrl = $"https://api.nasa.gov/planetary/apod?date={formattedDate}&api_key={apiKey}";
+
+                // Send an HTTP GET request to the constructed URL
+                return await client.GetAsync(apiUrl);
+            }
+            else
+            {
+                // Handle the case where date is null (e.g., use the default URL for the current day)
+                return await GetPictureOfTheDay();
+            }
         }
-
     }
 }
