@@ -2,9 +2,6 @@
 using BusinessServices.Contracts;
 using DataAccessModels.Models;
 using DataAccessRepositories.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace BusinessServices.Models
 {

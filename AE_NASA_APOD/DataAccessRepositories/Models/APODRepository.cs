@@ -1,11 +1,7 @@
 ﻿using BusinessQueryParameters;
 using DataAccessModels.Models;
 using DataAccessRepositories.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http.Json;
-using System.Threading.Tasks;
 
 namespace DataAccessRepositories.Models
 {
@@ -35,21 +31,18 @@ namespace DataAccessRepositories.Models
             var apodOfTheDay = await GetPictureOfTheDay();
 
                         
-            var filteredList = new List<APOD> { apodOfTheDay }; // Replace with your filtering logic
-
-            // Example: Filter by date
+            var filteredList = new List<APOD> { apodOfTheDay }; 
+                        
             if (queryParameters.Date != null)
             {
                 filteredList = filteredList.Where(apod => apod.Date == queryParameters.Date).ToList();
             }
 
-            // Example: Filter by title
             if (!string.IsNullOrEmpty(queryParameters.Title))
             {
                 filteredList = filteredList.Where(apod => apod.Title.Contains(queryParameters.Title, StringComparison.OrdinalIgnoreCase)).ToList();
             }
-
-            
+                        
             return filteredList;
         }
     }

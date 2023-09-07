@@ -1,6 +1,4 @@
 ﻿using BusinessDTOs;
-using BusinessExceptions;
-using BusinessQueryParameters;
 using BusinessServices.Contracts;
 using DataAccessModels.Models;
 using Mapper;
@@ -21,16 +19,33 @@ namespace AE_NASA_APOD.Controllers.API
             this.mapper = mapper;
         }
 
+        
         [HttpGet("")]
-        public async Task<IActionResult> GetAPODs([FromQuery] APODQueryParameters queryParameters)
+        public async Task<IActionResult> GetTodayAPOD()
         {
-            List<APOD> result = await this.apodService.FilterBy(queryParameters);
+            DateTime today = DateTime.UtcNow.Date; 
 
-            List<GetAPODDTO> getAPODDTOs = result.Select(apod => mapper.Map(apod)).ToList();
+            try
+            {
+                APOD apod = await this.apodService.GetAPODByDate(today);
 
-            return this.StatusCode(StatusCodes.Status200OK, getAPODDTOs);
+                if (apod == null)
+                {
+                    return NotFound(); 
+                }
+
+                GetAPODDTO getAPODDTO = mapper.Map(apod);
+
+                return Ok(getAPODDTO);
+            }
+            catch (Exception ex)
+            {
+                
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occurred while fetching today's APOD.");
+            }
         }
 
-        
+
+
     }
 }

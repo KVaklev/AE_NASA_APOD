@@ -1,6 +1,4 @@
-﻿using DataAccessModels.Models;
-
-namespace DataAccessRepositories.Contracts
+﻿namespace DataAccessRepositories.Contracts
 {
     public interface INasaHttpClientHelper
     {

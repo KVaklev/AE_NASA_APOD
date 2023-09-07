@@ -1,5 +1,4 @@
 ﻿using BusinessDTOs;
-using BusinessExceptions;
 using BusinessQueryParameters;
 using BusinessServices.Contracts;
 using DataAccessModels.Models;
@@ -29,8 +28,6 @@ namespace AE_NASA_APOD.Controllers.API
             List<GetAsteroidDTO> getAsteroidDTOs = result.Select(asteroid => mapper.Map(asteroid)).ToList();
 
             return this.StatusCode(StatusCodes.Status200OK, getAsteroidDTOs);
-        }
-
-        
+        }                
     }
 }

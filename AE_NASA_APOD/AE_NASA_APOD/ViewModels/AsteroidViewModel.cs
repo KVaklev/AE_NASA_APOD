@@ -1,6 +1,4 @@
-﻿using DataAccessModels.Models;
-
-namespace AE_NASA_APOD.Models
+﻿namespace AE_NASA_APOD.Models
 {
     public class AsteroidViewModel
     {

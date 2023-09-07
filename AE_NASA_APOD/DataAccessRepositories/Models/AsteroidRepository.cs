@@ -3,7 +3,6 @@ using BusinessQueryParameters;
 using DataAccessModels.Models;
 using DataAccessRepositories.Contracts;
 using System.Net.Http.Json;
-using Newtonsoft.Json.Linq;
 
 namespace DataAccessRepositories.Models
 {

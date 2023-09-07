@@ -16,12 +16,6 @@ namespace AE_NASA_APOD
 
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
-            //builder.Services.AddDbContext<ApplicationContext>(options =>
-            //{
-            //    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-            //    options.EnableSensitiveDataLogging();
-            //});
-
             // Add services to the container.
             builder.Services.AddControllers();
             builder.Services.AddControllersWithViews();

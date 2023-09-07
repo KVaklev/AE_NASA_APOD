@@ -4,12 +4,11 @@
 
 <h2 style="color: white;">Astronomy Picture Of The Day</h2>
 
-<!-- Filter Form -->
 <form asp-controller="APOD" asp-action="Index" method="get">
     <div class="form-group">
         <label for="date" style="color: antiquewhite;">Select a date:</label>
         <br />
-        <!-- Use HTML5 date input -->
+        
         <input type="date" id="date" name="date" class="form-control-sm" value="@Model.Date.ToString("yyyy-MM-dd")" />
     </div>
     <br />
@@ -17,7 +16,7 @@
 </form>
 <br />
 
-<!-- Display APOD Information -->
+
 @if (Model.Date != null)
 {
     <div>
@@ -35,15 +34,15 @@
     <div>
         @if (Model.Media_Type == "image")
         {
-            <!-- Display image -->
+           
             <strong style="color: antiquewhite;">Image:</strong>
             <img src="@Model.Url" alt="@Model.Title" />
         }
         else if (Model.Media_Type == "video")
         {
-            <!-- Display video -->
+           
             <strong style="color: antiquewhite;">Video:</strong>
-            <!-- Embed video using an HTML video player -->
+            
             <video width="400" controls>
                 <source src="@Model.Url" type="video/mp4">
                 Your browser does not support the video tag.

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using BusinessQueryParameters;
+﻿using BusinessQueryParameters;
 using DataAccessModels.Models;
 
 namespace BusinessServices.Contracts

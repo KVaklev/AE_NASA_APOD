@@ -1,11 +1,8 @@
 ﻿using AE_NASA_APOD.Models;
-using BusinessDTOs;
-using BusinessExceptions;
 using BusinessQueryParameters;
 using BusinessServices.Contracts;
 using DataAccessModels.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Hosting;
 using OfficeOpenXml;
 
 namespace AE_NASA_APOD.Controllers.MVC
@@ -49,11 +46,9 @@ namespace AE_NASA_APOD.Controllers.MVC
         public async Task<IActionResult> ExportToXlsx()
         {            
             List<Asteroid> asteroids = await asteroidService.GetAll();
-
-            // Generate the XLSX file
+                        
             byte[] fileContents = GenerateXlsxFile(asteroids);
-
-            // Return the XLSX file as a downloadable file
+            
             return File(fileContents, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "asteroids.xlsx");
         }
 
@@ -62,8 +57,7 @@ namespace AE_NASA_APOD.Controllers.MVC
             using (var package = new ExcelPackage())
             {
                 var worksheet = package.Workbook.Worksheets.Add("Asteroids");
-
-                // Add headers
+                                
                 worksheet.Cells["A1"].Value = "Id";
                 worksheet.Cells["B1"].Value = "Name";
                 worksheet.Cells["C1"].Value = "NasaJplUrl";
@@ -72,8 +66,6 @@ namespace AE_NASA_APOD.Controllers.MVC
                 worksheet.Cells["F1"].Value = "MaximumDiameterKm";
                 worksheet.Cells["G1"].Value = "Hazardous";
                 worksheet.Cells["H1"].Value = "VelocityKmH";
-
-
 
                 int row = 2;
                 foreach (var asteroid in asteroids)
@@ -91,7 +83,6 @@ namespace AE_NASA_APOD.Controllers.MVC
                     worksheet.Cells[row, 7].Value = asteroid.Hazardous;
                     worksheet.Cells[row, 8].Value = Velocity;
                     
-
                     row++;
                 }
 

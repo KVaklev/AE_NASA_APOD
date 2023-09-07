@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace BusinessDTOs
+﻿namespace BusinessDTOs
 {
     public class GetAsteroidDTO
     {

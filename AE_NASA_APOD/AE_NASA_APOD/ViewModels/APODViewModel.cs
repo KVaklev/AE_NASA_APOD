@@ -1,6 +1,4 @@
-﻿using DataAccessModels.Models;
-
-namespace AE_NASA_APOD.ViewModels
+﻿namespace AE_NASA_APOD.ViewModels
 {
     public class APODViewModel
     {

@@ -1,11 +1,8 @@
 ﻿using AE_NASA_APOD.ViewModels;
-using BusinessQueryParameters;
 using BusinessServices.Contracts;
-using DataAccessModels.Models;
 using DataAccessRepositories.Contracts;
 using Microsoft.AspNetCore.Mvc;
-using System.Net.Http.Json;
-using System.Threading.Tasks;
+
 
 namespace AE_NASA_APOD.Controllers.MVC
 {
@@ -49,8 +46,7 @@ namespace AE_NASA_APOD.Controllers.MVC
                     return View(apodViewModel);
                 }
                 else
-                {
-                    // Handle API request failure (e.g., log error, return an error view)
+                {                    
                     return View("Error");
                 }
             }
